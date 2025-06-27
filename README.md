@@ -180,3 +180,44 @@ Use this trade-off to design a testing strategy that gives you the **most value*
 > Like choosing between dress shoes and running shoes — it depends on where you're going.
 
 ---
+
+## ⚙️ Setting Up Vitest
+
+Easily add Vitest to your project in just a few steps:
+
+---
+
+### 📥 1. Install Vitest
+
+Open your terminal and run:
+
+```bash
+npm i -D vitest
+```
+
+- The `-D` flag installs Vitest as a **development dependency**.
+- This keeps your test tools out of your production bundle.
+
+---
+
+### 🛠️ 2. Add a Test Script
+
+In your `package.json`, add the following to the `"scripts"` section:
+
+```json
+"scripts": {
+  "test": "vitest"
+}
+```
+
+---
+
+### ▶️ 3. Run Your Tests
+
+Now you can run your tests with:
+
+```bash
+npm test
+# or
+npm t
+```
