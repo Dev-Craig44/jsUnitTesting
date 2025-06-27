@@ -113,3 +113,70 @@ Bad tests can:
 If your tests don’t meet these criteria, they’ll slow you down instead of speeding you up.
 
 ---
+
+## 🧪 Types of Tests
+
+In automated testing, there are three primary types of tests:
+
+---
+
+### ✅ Unit Tests
+
+- Test **individual units** of code (functions, classes, small modules) in **isolation**.
+- Catch bugs **early** in the development process.
+- Very **fast** to run and ideal for test-driven development.
+- Example: Verifying a function correctly calculates a discount.
+
+---
+
+### 🔗 Integration Tests
+
+- Test how **multiple components** work **together**.
+- Help catch issues in **data flow**, **module communication**, and **component compatibility**.
+- Slower than unit tests but essential for ensuring connected parts of the system cooperate correctly.
+- Example: Testing a form component that depends on validation and a backend API response.
+
+---
+
+### 🌐 End-to-End (E2E) Tests
+
+- Simulate **real user interaction** with the entire application.
+- Test from the UI down to the backend and database.
+- Provide **highest confidence** but are **slowest** to run.
+- Example: Testing the complete sign-up flow including form submission and confirmation email.
+
+---
+
+## 📐 The Testing Pyramid
+
+The classic advice for testing is to follow a **pyramid structure**:
+
+- More unit tests (base)
+- Fewer integration tests (middle)
+- Even fewer end-to-end tests (tip)
+
+> ⚠️ However, this is just a guideline — **not a rule**. Every project has different needs.
+
+---
+
+## 🧠 Key Insight
+
+As you move **up the pyramid** (from unit → integration → E2E):
+
+- **Speed decreases**
+- **Confidence increases**
+
+Use this trade-off to design a testing strategy that gives you the **most value** for your time and resources.
+
+---
+
+## 🎯 Strategy Advice
+
+- Use **unit tests** for fast feedback while coding and refactoring.
+- Use **integration tests** where units interact closely (e.g. services + UI).
+- Use **E2E tests** sparingly to validate the full user experience.
+- Don’t fall into extremes. There’s no universal formula.
+
+> Like choosing between dress shoes and running shoes — it depends on where you're going.
+
+---
