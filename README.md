@@ -222,18 +222,30 @@ npm test
 npm t
 ```
 
-# My first test
+## 🧑‍🔬 Your First Test
 
-1.) create test/intro.test.js file in the root folder
+Let's write your very first test!
 
-- Vitest picks up files that have `test` in their name.
+1. **Create a file:**  
+   In your project root, add a new file:  
+   `test/intro.test.js`
 
-we usually use the `AAA` pattern:
+> Vitest automatically detects files with `test` in their name.
 
-- Arrange - set up our configs and data
-- Act - perform the action we want to test
-- Assert - check the outcome to make sure it matches our expectations.
+---
 
-- Arrange - turn on the tv
-- Act - Press the power button
-- Assert - Verify TV is off
+### 🅰️🅰️🅰️ The AAA Pattern
+
+Most tests follow the **AAA** pattern:
+
+1. **Arrange** – Set up any necessary data or configuration.
+2. **Act** – Perform the action you want to test.
+3. **Assert** – Check that the outcome matches your expectations.
+
+#### Example (Testing a TV Power Button):
+
+- **Arrange:** The TV is turned on.
+- **Act:** Press the power button.
+- **Assert:** The TV should now be off.
+
+---
