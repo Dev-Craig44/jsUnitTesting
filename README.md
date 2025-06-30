@@ -221,3 +221,19 @@ npm test
 # or
 npm t
 ```
+
+# My first test
+
+1.) create test/intro.test.js file in the root folder
+
+- Vitest picks up files that have `test` in their name.
+
+we usually use the `AAA` pattern:
+
+- Arrange - set up our configs and data
+- Act - perform the action we want to test
+- Assert - check the outcome to make sure it matches our expectations.
+
+- Arrange - turn on the tv
+- Act - Press the power button
+- Assert - Verify TV is off
