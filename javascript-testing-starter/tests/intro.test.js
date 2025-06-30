@@ -26,26 +26,18 @@ describe("max", () => {
 
 describe("fizzBuzz", () => {
   it("should return fizzBuzz if n is divisable by 3, and  5", () => {
-    const n = 15;
-    const result = fizzBuzz(n);
-    expect(result).toBe("FizzBuzz");
+    expect(fizzBuzz(15)).toBe("FizzBuzz");
   });
 
   it("should return Buzz if n is divisable by 5", () => {
-    const n = 10;
-    const result = fizzBuzz(n);
-    expect(result).toBe("Buzz");
+    expect(fizzBuzz(10)).toBe("Buzz");
   });
 
   it("should return Fizz if n is divisable by 3", () => {
-    const n = 6;
-    const result = fizzBuzz(n);
-    expect(result).toBe("Fizz");
+    expect(fizzBuzz(6)).toBe("Fizz");
   });
 
   it("should return n if n is not divisable 3, or 5", () => {
-    const n = 7;
-    const result = fizzBuzz(n);
-    expect(result).toBe(n.toString());
+    expect(fizzBuzz(7)).toBe("7");
   });
 });
