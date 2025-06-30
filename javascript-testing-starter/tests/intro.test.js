@@ -24,40 +24,28 @@ describe("max", () => {
   });
 });
 
-// 1.) duplicate that max function test suite and modify it for the fizzBuzz()
 describe("fizzBuzz", () => {
   it("should return fizzBuzz if n is divisable by 3, and  5", () => {
     const n = 15;
-
     const result = fizzBuzz(n);
-
     expect(result).toBe("FizzBuzz");
   });
 
-  // 2.) duplicate last test case and modify for 2nd execution path
   it("should return Buzz if n is divisable by 5", () => {
     const n = 10;
-
     const result = fizzBuzz(n);
-
     expect(result).toBe("Buzz");
   });
 
-  // 3.) duplicate last test case and modify for 3rd execution path
   it("should return Fizz if n is divisable by 3", () => {
     const n = 6;
-
     const result = fizzBuzz(n);
-
     expect(result).toBe("Fizz");
   });
 
-  // 4.) duplicate last test case and modify for 4th execution path
   it("should return n if n is not divisable 3, or 5", () => {
     const n = 7;
-
     const result = fizzBuzz(n);
-
     expect(result).toBe(n.toString());
   });
 });
