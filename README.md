@@ -249,3 +249,73 @@ Most tests follow the **AAA** pattern:
 - **Assert:** The TV should now be off.
 
 ---
+
+# Code-First vs Test-First (TDD) — A Step-by-Step Walk-through
+
+---
+
+## 1. Two Ways to Write Tests
+
+| Approach       | Sequence                                                         | Nickname                          |
+| -------------- | ---------------------------------------------------------------- | --------------------------------- |
+| **Code First** | 1. Write application code → 2. Add tests afterward               | “What we’ve done so far”          |
+| **Test First** | 1. Write tests → 2. Write just enough code to pass → 3. Refactor | **TDD = Test-Driven Development** |
+
+---
+
+## 2. TDD’s Three-Step Cycle
+
+1. **Red** – Write a **failing** test.
+2. **Green** – Write the **simplest code** that makes the test pass.
+3. **Refactor** – Improve the design while keeping all tests green.
+   - Loop back to step 1 and repeat.
+
+---
+
+## 3. TDD in Action – `calculateAverage()` Example
+
+> Goal: create a function that returns the average of an array of numbers.
+
+### Step-by-Step Chronology
+
+<details>
+<summary>Click to unfold the full cycle</summary>
+
+| #     | Action                                                          | Code Snippet                                                                                                                                                                                           | Result                                       |
+| ----- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------- |
+| **1** | **Write first failing test** – empty array should return `NaN`. | `js\n// test/calculateAverage.test.js\nit(\"returns NaN for an empty array\", () => {\n  expect(calculateAverage([])).toBeNaN();\n});\n`                                                               | Test fails: expected `NaN`, got `undefined`. |
+| **2** | **Declare the function** without implementation.                | `js\nexport function calculateAverage(numbers) {}\n`                                                                                                                                                   | Test still fails (`undefined`).              |
+| **3** | **Make it pass** with minimal logic.                            | `js\nexport function calculateAverage(numbers) {\n  return NaN;\n}\n`                                                                                                                                  | ✅ Test passes.                              |
+| **4** | **Add second test** – single-element array.                     | `js\nit(\"averages a single-element array\", () => {\n  expect(calculateAverage([1])).toBe(1);\n});\n`                                                                                                 | Fails again.                                 |
+| **5** | **Expand logic** just enough.                                   | `js\nexport function calculateAverage(numbers) {\n  if (numbers.length === 0) return NaN;\n  return numbers[0];\n}\n`                                                                                  | ✅ Both tests pass.                          |
+| **6** | **Add third test** – two elements (`[1, 2] → 1.5`).             | Fails.                                                                                                                                                                                                 |
+| **7** | **Generalise implementation**.                                  | `js\nexport function calculateAverage(numbers) {\n  if (numbers.length === 0) return NaN;\n  const sum = numbers.reduce((total, current) => total + current, 0);\n  return sum / numbers.length;\n}\n` | ✅ All three tests pass.                     |
+| **8** | **Add fourth test** – three elements (`[1,2,3] → 2`).           | Still passes → cycle complete.                                                                                                                                                                         |
+
+</details>
+
+---
+
+## 4. Benefits of TDD
+
+- **100 % test coverage** for every execution path produced.
+- **Prevents over-engineering** — you implement only what the failing test demands.
+- **Continuous safety net** for fearless refactoring.
+
+---
+
+## 5. Real-World Caveats
+
+- **Learning curve**: writing tests first feels awkward at first.
+- **Complex domains**: crafting the very first test can be hard when requirements are fuzzy.
+- **Not one-size-fits-all**: many teams happily adopt a hybrid (write-some-code, write-a-test) workflow.
+
+---
+
+## 6. Takeaways
+
+- **TDD is a philosophy, not a religion.** Adopt when it boosts clarity and confidence; skip when it slows discovery.
+- **Code First isn’t “wrong.”** If you prefer to prototype quickly and add tests afterward, that’s valid.
+- **Experiment.** Practice TDD on small utilities (like `calculateAverage`) to build muscle memory before tackling large apps.
+
+---

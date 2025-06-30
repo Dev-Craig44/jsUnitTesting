@@ -11,3 +11,10 @@ export function fizzBuzz(n) {
   if (n % 5 === 0) return "Buzz";
   return n.toString();
 }
+
+// 3.) create the calculateAverage()
+export function calculateAverage(numbers) {
+  // 8.)
+  // 5.) make test pass with the simplest implementation
+  return NaN;
+}
