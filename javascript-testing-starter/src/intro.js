@@ -14,7 +14,9 @@ export function fizzBuzz(n) {
 
 // 3.) create the calculateAverage()
 export function calculateAverage(numbers) {
-  // 8.)
+  // 8.) make test pass new test case
+  if (numbers.length === 0) return NaN;
+  return numbers[0];
   // 5.) make test pass with the simplest implementation
   return NaN;
 }

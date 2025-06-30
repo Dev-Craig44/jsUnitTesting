@@ -53,6 +53,6 @@ describe("calculateAverage", () => {
   //   6.) duplicate previous failing test case and modify for calculating a single element in a array
   it("should calculate the average of an array with a single element", () => {
     // 7.) give `1` to toBe(), call the function, make assertions for it to `1`
-    expect(calculateAverage(1)).toBe(1);
+    expect(calculateAverage([1])).toBe(1);
   });
 });
