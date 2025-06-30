@@ -1,8 +1,7 @@
 // Lesson: Writing your first tests
+// 1.) refactor code
 export function max(a, b) {
-  if (a > b) return a;
-  else if (b > a) return b;
-  return a;
+  return a > b ? a : b;
 }
 
 // Exercise
