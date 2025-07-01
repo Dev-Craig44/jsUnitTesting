@@ -325,3 +325,7 @@ expect(result).toBe({name: 'Mosh'});
 
     - These are two different objects in memory, even though they have the same content.
     - Don't compare their references, compare their **Content** with toBeEqual()
+
+# Writing Good Assertions
+
+- Write assertions that are not too specific and not too general.
