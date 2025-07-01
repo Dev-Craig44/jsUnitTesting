@@ -368,3 +368,52 @@ VSCode offers powerful shortcuts and features to help you work efficiently with 
 - These shortcuts help you quickly retrace your steps as you explore and edit your tests.
 
 ---
+
+## 📊 Code Coverage
+
+Easily measure how much of your code is covered by tests using Vitest:
+
+---
+
+### 📝 1. Add a Coverage Script
+
+In your `package.json`, add the following script:
+
+```json
+"scripts": {
+  "coverage": "vitest run --coverage"
+}
+```
+
+---
+
+### ▶️ 2. Run Code Coverage
+
+Run the coverage script in your terminal:
+
+```bash
+npm run coverage
+```
+
+---
+
+### 🗂️ 3. Ignore Coverage Output
+
+Add `coverage/` to your `.gitignore` file to prevent coverage reports from being committed:
+
+```
+coverage/
+```
+
+---
+
+### 🌐 4. View the Coverage Report
+
+1. Open the `coverage/` folder generated in your project.
+2. Find the `index.html` file inside.
+3. Right-click and select **Reveal in Finder** (or use <kbd>Option</kbd> + <kbd>Cmd</kbd> + <kbd>R</kbd>).
+4. Drag and drop `index.html` into your browser to view a detailed coverage report.
+
+---
+
+With these steps, you can quickly see which parts of your code are tested—and which need more coverage!
