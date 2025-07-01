@@ -1,7 +1,7 @@
 # jsUnitTesting
 
 > **Note:**  
-> I accidentally deleted everything in this project.
+> This project was reset after removing a submodule.
 
 To remove the submodule, I ran:
 
@@ -11,210 +11,155 @@ git rm -f javascript-testing-starter
 rm -rf .git/modules/javascript-testing-starter
 ```
 
-So, here we go again...
+---
 
-## 🧪 What is Unit Testing?
+# 🧪 Introduction to Unit Testing
 
-Unit testing is the practice of writing **automated tests** that verify the correctness of individual functions or components in your codebase — without launching the full application or interacting with the UI.
+Unit testing is the practice of writing **automated tests** to verify the correctness of individual functions or components—without launching the full application or interacting with the UI.
 
 ---
 
-### 🔄 Manual vs. Automated Testing
+## 🧠 Why Unit Testing?
 
-Traditionally, testing a function might involve:
+- **Catch bugs early:** Fixing bugs during development is much cheaper than in production.
+- **Refactor with confidence:** Tests act as safety nets when changing code.
+- **Think through edge cases:** Writing tests forces you to consider error states and input variations.
+- **Living documentation:** Tests show how code is expected to behave.
 
-1. Launching the app
-2. Logging in
-3. Navigating through the UI
-4. Filling out a form
-5. Submitting it
-6. Verifying the result
+---
 
-That process is time-consuming and fragile. With **unit testing**, you skip all that and instead:
+## ⚖️ Manual vs. Automated Testing
 
-- Call the function **directly** in code
+**Manual testing** is slow and fragile (launch app, log in, navigate, etc.).  
+**Automated unit testing** is fast and reliable:
+
+- Call functions directly in code
 - Pass in different inputs
-- Use a **test runner** to verify the expected output
-
-This provides instant feedback via the terminal — ✅ green if it passes, ❌ red if it fails — and allows you to run **hundreds of tests in seconds**.
+- Use a test runner for instant feedback (✅/❌)
 
 ---
 
-### 🧠 Why Unit Testing Matters
+## 🏗️ Types of Automated Tests
 
-Once you build a suite of tests, you can run them **every time you make changes**. The benefits compound as your app grows.
-
-#### ✅ 1. Catch Bugs Early
-
-- Bugs found in the development phase are much cheaper to fix than bugs found in production.
-- Studies show that post-deployment fixes can cost **5x more** than fixes caught during coding.
-
-#### ✅ 2. Refactor with Confidence
-
-- Refactoring = changing code structure without changing behavior.
-- Tests act as safety nets: if something breaks, you'll know immediately.
-- Example: Extracting repeated logic into a helper function.
-
-#### ✅ 3. Think Through Edge Cases
-
-- Writing tests forces you to think critically about error states, edge cases, and input variations.
-- Result: more robust, reliable code.
-
-#### ✅ 4. Living Documentation
-
-- Unit tests show how a function is expected to behave.
-- Other developers (or your future self) can understand the purpose of the code just by reading the tests.
-
----
-
-### ⚖️ The Debate: How Much Testing Is Too Much?
-
-You’ll meet people with extreme opinions:
-
-- 🧔‍♂️ _John Smith_: _"I’ve written bug-free code for 20 years without a single unit test."_
-- 🧑‍💻 _Test Smith_: _"Every line of code must be tested."_
-
-Both are wrong.
-
-#### 🧭 Be Pragmatic:
-
-- No tests = fragile, slow manual testing.
-- Testing every single line = costly, often unrealistic.
-- Find a **balanced strategy** that fits the nature of your project.
-
----
-
-### 🧠 When to Invest in Unit Testing
-
-| Project Type                            | Test Coverage Strategy              |
-| --------------------------------------- | ----------------------------------- |
-| 🚧 New Project w/ Evolving Requirements | Be light on tests — expect change   |
-| 🏗️ Stable, Mature Codebase              | Invest in covering critical modules |
-| 💼 Business-Critical Features           | Prioritize robust, trusted tests    |
-
-> Unit testing is an investment. Like all investments, it can be wise or wasteful depending on how you do it.
-
----
-
-### ⚠️ Poor Tests Are Worse Than No Tests
-
-Bad tests can:
-
-- Produce false positives or negatives
-- Waste time during maintenance
-- Block progress instead of guiding it
-
-#### ✅ Good Tests Should Be:
-
-- **Maintainable** – easy to update
-- **Robust** – not fragile or overly specific
-- **Trustworthy** – accurately reflect the intended behavior
-
-If your tests don’t meet these criteria, they’ll slow you down instead of speeding you up.
-
----
-
-## 🧪 Types of Tests
-
-In automated testing, there are three primary types of tests:
-
----
-
-### ✅ Unit Tests
-
-- Test **individual units** of code (functions, classes, small modules) in **isolation**.
-- Catch bugs **early** in the development process.
-- Very **fast** to run and ideal for test-driven development.
-- Example: Verifying a function correctly calculates a discount.
-
----
-
-### 🔗 Integration Tests
-
-- Test how **multiple components** work **together**.
-- Help catch issues in **data flow**, **module communication**, and **component compatibility**.
-- Slower than unit tests but essential for ensuring connected parts of the system cooperate correctly.
-- Example: Testing a form component that depends on validation and a backend API response.
-
----
-
-### 🌐 End-to-End (E2E) Tests
-
-- Simulate **real user interaction** with the entire application.
-- Test from the UI down to the backend and database.
-- Provide **highest confidence** but are **slowest** to run.
-- Example: Testing the complete sign-up flow including form submission and confirmation email.
+| Type            | What it Tests                             | Speed   | Example                                       |
+| --------------- | ----------------------------------------- | ------- | --------------------------------------------- |
+| **Unit**        | Individual functions/classes in isolation | Fast    | Verifying a discount calculation function     |
+| **Integration** | How multiple components work together     | Medium  | Form component + validation + API response    |
+| **End-to-End**  | The entire app (UI to backend/database)   | Slowest | Complete sign-up flow with confirmation email |
 
 ---
 
 ## 📐 The Testing Pyramid
 
-The classic advice for testing is to follow a **pyramid structure**:
+- **Base:** More unit tests
+- **Middle:** Fewer integration tests
+- **Tip:** Fewest end-to-end tests
 
-- More unit tests (base)
-- Fewer integration tests (middle)
-- Even fewer end-to-end tests (tip)
+> ⚠️ This is a guideline, not a rule. Adapt to your project’s needs.
 
-> ⚠️ However, this is just a guideline — **not a rule**. Every project has different needs.
-
----
-
-## 🧠 Key Insight
-
-As you move **up the pyramid** (from unit → integration → E2E):
+As you move up the pyramid:
 
 - **Speed decreases**
 - **Confidence increases**
 
-Use this trade-off to design a testing strategy that gives you the **most value** for your time and resources.
+---
+
+## 🧭 How Much Testing Is Enough?
+
+- No tests = fragile, slow manual testing.
+- 100% coverage = costly, often unrealistic.
+- **Be pragmatic:** Find a balanced strategy for your project.
+
+| Project Type                            | Test Coverage Strategy            |
+| --------------------------------------- | --------------------------------- |
+| 🚧 New Project w/ Evolving Requirements | Be light on tests — expect change |
+| 🏗️ Stable, Mature Codebase              | Cover critical modules            |
+| 💼 Business-Critical Features           | Prioritize robust, trusted tests  |
+
+> Unit testing is an investment. Make it wisely.
 
 ---
 
-## 🎯 Strategy Advice
+## ⚠️ Poor Tests Are Worse Than No Tests
 
-- Use **unit tests** for fast feedback while coding and refactoring.
-- Use **integration tests** where units interact closely (e.g. services + UI).
-- Use **E2E tests** sparingly to validate the full user experience.
-- Don’t fall into extremes. There’s no universal formula.
+Bad tests can:
 
-> Like choosing between dress shoes and running shoes — it depends on where you're going.
+- Produce false positives/negatives
+- Waste maintenance time
+- Block progress
+
+**Good tests are:**
+
+- Maintainable
+- Robust
+- Trustworthy
+
+---
+
+## 🅰️🅰️🅰️ The AAA Pattern
+
+Most tests follow the **AAA** pattern:
+
+1. **Arrange:** Set up data/configuration
+2. **Act:** Perform the action
+3. **Assert:** Check the outcome
+
+**Example:**
+
+- Arrange: TV is on
+- Act: Press power button
+- Assert: TV is off
+
+---
+
+## 🧑‍🔬 Code-First vs Test-First (TDD)
+
+| Approach       | Sequence                                             | Nickname                          |
+| -------------- | ---------------------------------------------------- | --------------------------------- |
+| **Code First** | 1. Write code → 2. Add tests afterward               | “What we’ve done so far”          |
+| **Test First** | 1. Write tests → 2. Write code to pass → 3. Refactor | **TDD = Test-Driven Development** |
+
+**TDD Cycle:**
+
+1. **Red:** Write a failing test
+2. **Green:** Write code to pass
+3. **Refactor:** Improve design, keep tests green
+
+**Benefits:**
+
+- 100% test coverage for execution paths
+- Prevents over-engineering
+- Continuous safety net
+
+**Caveats:**
+
+- Learning curve
+- Hard to start in complex domains
+- Hybrid approaches are common
+
+> TDD is a philosophy, not a religion. Use it when it helps.
 
 ---
 
 ## ⚙️ Setting Up Vitest
 
-Easily add Vitest to your project in just a few steps:
-
----
-
-### 📥 1. Install Vitest
-
-Open your terminal and run:
+### 1. Install Vitest
 
 ```bash
 npm i -D vitest
 ```
 
-- The `-D` flag installs Vitest as a **development dependency**.
-- This keeps your test tools out of your production bundle.
+### 2. Add a Test Script
 
----
-
-### 🛠️ 2. Add a Test Script
-
-In your `package.json`, add the following to the `"scripts"` section:
+In `package.json`:
 
 ```json
 "scripts": {
-  "test": "vitest"
+   "test": "vitest"
 }
 ```
 
----
-
-### ▶️ 3. Run Your Tests
-
-Now you can run your tests with:
+### 3. Run Your Tests
 
 ```bash
 npm test
@@ -222,89 +167,31 @@ npm test
 npm t
 ```
 
+---
+
 ## 🧑‍🔬 Your First Test
 
-Let's write your very first test!
+Create `test/intro.test.js` in your project root.
 
-1. **Create a file:**  
-   In your project root, add a new file:  
-   `test/intro.test.js`
+> Vitest auto-detects files with `test` in their name.
 
-> Vitest automatically detects files with `test` in their name.
+**Example:**
 
----
+```js
+import { describe, expect, it } from "vitest";
 
-### 🅰️🅰️🅰️ The AAA Pattern
-
-Most tests follow the **AAA** pattern:
-
-1. **Arrange** – Set up any necessary data or configuration.
-2. **Act** – Perform the action you want to test.
-3. **Assert** – Check that the outcome matches your expectations.
-
-#### Example (Testing a TV Power Button):
-
-- **Arrange:** The TV is turned on.
-- **Act:** Press the power button.
-- **Assert:** The TV should now be off.
-
----
-
-# Code-First vs Test-First (TDD) — A Step-by-Step Walk-through
-
----
-
-## 1. Two Ways to Write Tests
-
-| Approach       | Sequence                                                         | Nickname                          |
-| -------------- | ---------------------------------------------------------------- | --------------------------------- |
-| **Code First** | 1. Write application code → 2. Add tests afterward               | “What we’ve done so far”          |
-| **Test First** | 1. Write tests → 2. Write just enough code to pass → 3. Refactor | **TDD = Test-Driven Development** |
-
----
-
-## 2. TDD’s Three-Step Cycle
-
-1. **Red** – Write a **failing** test.
-2. **Green** – Write the **simplest code** that makes the test pass.
-3. **Refactor** – Improve the design while keeping all tests green.
-   - Loop back to step 1 and repeat.
-
----
-
-## 3. TDD in Action – `calculateAverage()` Example
-
-> Goal: create a function that returns the average of an array of numbers.
-
----
-
-## 4. Benefits of TDD
-
-- **100 % test coverage** for every execution path produced.
-- **Prevents over-engineering** — you implement only what the failing test demands.
-- **Continuous safety net** for fearless refactoring.
-
----
-
-## 5. Real-World Caveats
-
-- **Learning curve**: writing tests first feels awkward at first.
-- **Complex domains**: crafting the very first test can be hard when requirements are fuzzy.
-- **Not one-size-fits-all**: many teams happily adopt a hybrid (write-some-code, write-a-test) workflow.
-
----
-
-## 6. Takeaways
-
-- **TDD is a philosophy, not a religion.** Adopt when it boosts clarity and confidence; skip when it slows discovery.
-- **Code First isn’t “wrong.”** If you prefer to prototype quickly and add tests afterward, that’s valid.
-- **Experiment.** Practice TDD on small utilities (like `calculateAverage`) to build muscle memory before tackling large apps.
+describe("max", () => {
+  it("returns the greater of two numbers", () => {
+    expect(Math.max(1, 2)).toBe(2);
+  });
+});
+```
 
 ---
 
 ## 🚦 Running Tests
 
-Vitest offers a powerful interactive test runner with handy keyboard shortcuts:
+Vitest offers interactive shortcuts:
 
 | Shortcut      | Action                               |
 | ------------- | ------------------------------------ |
@@ -320,9 +207,9 @@ Vitest offers a powerful interactive test runner with handy keyboard shortcuts:
 
 ---
 
-### 🖥️ Running the Vitest UI
+### 🖥️ Vitest UI
 
-Add this script to your `package.json`:
+Add to `package.json`:
 
 ```json
 "scripts": {
@@ -330,90 +217,74 @@ Add this script to your `package.json`:
 }
 ```
 
-Now, launch the interactive UI with:
+Run:
 
 ```bash
 npm run test:ui
 ```
 
-This opens a visual dashboard for running and inspecting your tests.
+This opens a visual dashboard for running and inspecting tests.
 
 ---
 
 ## 🧭 Navigating Tests in VSCode
 
-VSCode offers powerful shortcuts and features to help you work efficiently with your test files:
-
----
-
-### 🗂️ Viewing Test Suites
-
-- Click the **ellipsis (`...`)** next to the filename tab to reveal a panel listing all your test suites and individual tests.
-- This makes it easy to jump between tests and see their structure at a glance.
-
----
-
-### 🔎 Quick Navigation
-
-- Press <kbd>Cmd</kbd> + <kbd>P</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>P</kbd> (Windows/Linux) to open the **Quick Open** dialog.
-  - Type `:` followed by a number to jump to a specific **line** (e.g., `:42`).
-  - Type `@` to list and jump to **symbols** (functions, classes, tests) in the current file.
-
----
-
-### ⏪ Cursor History
-
-- Use <kbd>Ctrl</kbd> + <kbd>-</kbd> to **go back** to the previous cursor position.
-- Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> to **go forward**.
-- These shortcuts help you quickly retrace your steps as you explore and edit your tests.
+- **Test Explorer:** Click the ellipsis (`...`) next to the filename tab to view all test suites and cases.
+- **Quick Open:** <kbd>Cmd</kbd> + <kbd>P</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>P</kbd> (Win/Linux)
+  - `:42` jumps to line 42
+  - `@` lists symbols (functions, tests)
+- **Cursor History:**
+  - <kbd>Ctrl</kbd> + <kbd>-</kbd>: Go back
+  - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd>: Go forward
 
 ---
 
 ## 📊 Code Coverage
 
-Easily measure how much of your code is covered by tests using Vitest:
+### 1. Add a Coverage Script
 
----
-
-### 📝 1. Add a Coverage Script
-
-In your `package.json`, add the following script:
+In `package.json`:
 
 ```json
 "scripts": {
-  "coverage": "vitest run --coverage"
+   "coverage": "vitest run --coverage"
 }
 ```
 
----
-
-### ▶️ 2. Run Code Coverage
-
-Run the coverage script in your terminal:
+### 2. Run Coverage
 
 ```bash
 npm run coverage
 ```
 
----
+### 3. Ignore Coverage Output
 
-### 🗂️ 3. Ignore Coverage Output
-
-Add `coverage/` to your `.gitignore` file to prevent coverage reports from being committed:
+Add to `.gitignore`:
 
 ```
 coverage/
 ```
 
----
+### 4. View the Coverage Report
 
-### 🌐 4. View the Coverage Report
-
-1. Open the `coverage/` folder generated in your project.
-2. Find the `index.html` file inside.
-3. Right-click and select **Reveal in Finder** (or use <kbd>Option</kbd> + <kbd>Cmd</kbd> + <kbd>R</kbd>).
-4. Drag and drop `index.html` into your browser to view a detailed coverage report.
+- Open `coverage/index.html` in your browser for a detailed report.
 
 ---
 
-With these steps, you can quickly see which parts of your code are tested—and which need more coverage!
+## 📚 Key Terms & Concepts
+
+- **Automated testing:** Writing code to verify software behavior.
+- **Unit tests:** Validate small, isolated units.
+- **Integration tests:** Examine interactions between units.
+- **End-to-end tests:** Simulate user interactions across the whole app.
+- **Test framework:** Tools for writing/executing tests (e.g., Vitest, Jest).
+- **AAA pattern:** Arrange, Act, Assert.
+- **TDD:** Write tests before code.
+- **Code coverage:** Measures how much code is tested.
+
+---
+
+> Automated testing reduces manual effort and cost, but cannot replace all manual testing (e.g., for UI aesthetics).  
+> Strive for meaningful coverage, not just high numbers.
+
+---
