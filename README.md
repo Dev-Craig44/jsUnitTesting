@@ -333,3 +333,5 @@ expect(result).toBe({name: 'Mosh'});
   5.) **TypeError: actual value must be number or bigint, received "undefined"**
 
   - This is not clear.
+
+In the case of the type error, when using TypeScript, we won't run into the error.

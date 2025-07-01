@@ -30,4 +30,19 @@ describe("getCoupons", () => {
     // 4.) Make assertion for array with coupons
     expect(coupons.length).toBeGreaterThan(0);
   });
+
+  //   6.) Make test case for each coupon in the array having a [code]
+  it("should return an array with valid coupon codes", () => {
+    // 7.) capture the coupons
+    const coupons = getCoupons();
+    // 8.) Make sure each coupon has a code prop
+    coupons.forEach((coupon) => {
+      // 9.) Make assertion on current coupon to have a code prop
+      expect(coupon).toHaveProperty("code");
+      //   10.) Make assertion that the type is a `string`
+      expect(typeof coupon.code).toBe("string");
+      //   11.) Make assertion that this isn't an empty string
+      expect(coupon.code).toBeTruthy();
+    });
+  });
 });
