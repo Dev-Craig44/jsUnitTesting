@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@vitest/ui": "^3.2.4",
     "vitest": "^3.2.4"
   },
   "name": "jsunittesting",
@@ -45,7 +46,8 @@
     "why-is-node-running": "^2.3.0"
   },
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "repository": {
     "type": "git",

@@ -301,3 +301,39 @@ Most tests follow the **AAA** pattern:
 - **Experiment.** Practice TDD on small utilities (like `calculateAverage`) to build muscle memory before tackling large apps.
 
 ---
+
+## 🚦 Running Tests
+
+Vitest offers a powerful interactive test runner with handy keyboard shortcuts:
+
+| Shortcut      | Action                               |
+| ------------- | ------------------------------------ |
+| `a` + `Enter` | Rerun **all** tests                  |
+| `r`           | Rerun tests matching current pattern |
+| `f`           | Rerun **only failed** tests          |
+| `u`           | Update **snapshots**                 |
+| `p`           | Filter by **filename**               |
+| `t`           | Filter by **test name** (regex)      |
+| `w`           | Filter by **project name**           |
+| `b`           | Start **browser server** (if needed) |
+| `q`           | **Quit** test runner                 |
+
+---
+
+### 🖥️ Running the Vitest UI
+
+Add this script to your `package.json`:
+
+```json
+"scripts": {
+   "test:ui": "vitest --ui"
+}
+```
+
+Now, launch the interactive UI with:
+
+```bash
+npm run test:ui
+```
+
+This opens a visual dashboard for running and inspecting your tests.
