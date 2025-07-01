@@ -10,7 +10,10 @@ export function fizzBuzz(n) {
 }
 
 export function calculateAverage(numbers) {
+  // refactor implementation for the new test case
   if (numbers.length === 0) return NaN;
-  return numbers[0];
-  return NaN;
+  const sum = numbers.reduce((a, b) => {
+    return (a += b);
+  });
+  return sum / numbers.length;
 }

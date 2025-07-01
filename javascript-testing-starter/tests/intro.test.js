@@ -42,17 +42,16 @@ describe("fizzBuzz", () => {
   });
 });
 
-// 1.) create new test suite
 describe("calculateAverage", () => {
-  // 2.) create failing test case for recieveing an empty array
   it("should return NaN if given an empty array", () => {
-    // 4.) give `NaN` to toBe(), call the function, make assertions
     expect(calculateAverage([])).toBe(NaN);
   });
 
-  //   6.) duplicate previous failing test case and modify for calculating a single element in a array
   it("should calculate the average of an array with a single element", () => {
-    // 7.) give `1` to toBe(), call the function, make assertions for it to `1`
     expect(calculateAverage([1])).toBe(1);
+  });
+
+  it("should calculate the average of an array with two elements", () => {
+    expect(calculateAverage([1, 2])).toBe(1.5);
   });
 });
