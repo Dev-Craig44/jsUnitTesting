@@ -80,4 +80,8 @@ describe("factorial", () => {
   it("should return 24 if given 4", () => {
     expect(factorial(4)).toBe(24);
   });
+
+  it("should return undefined if gived a negative number", () => {
+    expect(factorial(-1)).toBe(undefined);
+  });
 });
