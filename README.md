@@ -337,3 +337,34 @@ npm run test:ui
 ```
 
 This opens a visual dashboard for running and inspecting your tests.
+
+---
+
+## 🧭 Navigating Tests in VSCode
+
+VSCode offers powerful shortcuts and features to help you work efficiently with your test files:
+
+---
+
+### 🗂️ Viewing Test Suites
+
+- Click the **ellipsis (`...`)** next to the filename tab to reveal a panel listing all your test suites and individual tests.
+- This makes it easy to jump between tests and see their structure at a glance.
+
+---
+
+### 🔎 Quick Navigation
+
+- Press <kbd>Cmd</kbd> + <kbd>P</kbd> (Mac) or <kbd>Ctrl</kbd> + <kbd>P</kbd> (Windows/Linux) to open the **Quick Open** dialog.
+  - Type `:` followed by a number to jump to a specific **line** (e.g., `:42`).
+  - Type `@` to list and jump to **symbols** (functions, classes, tests) in the current file.
+
+---
+
+### ⏪ Cursor History
+
+- Use <kbd>Ctrl</kbd> + <kbd>-</kbd> to **go back** to the previous cursor position.
+- Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>-</kbd> to **go forward**.
+- These shortcuts help you quickly retrace your steps as you explore and edit your tests.
+
+---
