@@ -76,4 +76,8 @@ describe("factorial", () => {
   it("should return 6 if given 3", () => {
     expect(factorial(3)).toBe(6);
   });
+
+  it("should return 24 if given 4", () => {
+    expect(factorial(4)).toBe(24);
+  });
 });
