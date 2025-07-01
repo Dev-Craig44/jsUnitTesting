@@ -1,20 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getCoupons } from "../src/core";
 
-describe("test suite", () => {
-  it("test case", () => {
-    const result = { name: "Craig" };
-    // Make a tight assertion - If you add a prop this will break
-    expect(result).toEqual({ name: "Craig" });
-    // Make more general assertion - Check for the presence of a subset of properties in this object
-    expect(result).toMatchObject({ name: "Craig" });
-    // Optional assertion - Check for the presence of the name prop. Who cares about the actual name.
-    expect(result).toHaveProperty("name");
-    // Make assertion for it to be a string
-    expect(typeof result.name).toBe("string");
-  });
-});
-
 // getCoupons(): objects[]
 // assert that the array is not empty
 // assert the objects in this array has two props {code: string, discount: number(>0 <1)}
@@ -43,6 +29,21 @@ describe("getCoupons", () => {
       expect(typeof coupon.code).toBe("string");
       //   11.) Make assertion that this isn't an empty string
       expect(coupon.code).toBeTruthy();
+    });
+  });
+  //   12.) Make test case for valid discounts
+  it("should return an array with valid discounts", () => {
+    // 13.) capture coupons
+    const coupons = getCoupons();
+    // 14.) iterate over the coupons
+    coupons.forEach((coupon) => {
+      // 15.) Make assertion for coupon to have the discount prop
+      expect(coupon).toHaveProperty("discount");
+      //   16.) Make assertion for the discount to be a number
+      expect(typeof coupon.discount).toBe("number");
+      // 17.) Make assertion for the discount to be > 0 and < 1
+      expect(coupon.discount).toBeGreaterThan(0);
+      expect(coupon.discount).toBeLessThan(1);
     });
   });
 });

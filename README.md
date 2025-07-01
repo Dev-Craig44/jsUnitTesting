@@ -335,3 +335,7 @@ expect(result).toBe({name: 'Mosh'});
   - This is not clear.
 
 In the case of the type error, when using TypeScript, we won't run into the error.
+
+- Make sure that when you are making these assertions, when dealing with a object that you are using the prop and not the actual object for comparing.
+
+- Our tests should test a single behavior
