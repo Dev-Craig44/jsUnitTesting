@@ -329,3 +329,7 @@ expect(result).toBe({name: 'Mosh'});
 # Writing Good Assertions
 
 - Write assertions that are not too specific and not too general.
+
+  5.) **TypeError: actual value must be number or bigint, received "undefined"**
+
+  - This is not clear.
