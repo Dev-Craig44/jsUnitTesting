@@ -317,3 +317,11 @@ Trustworthy Test - A test that can be trusted.
   - No global state.
 
 Tests should be fully **isolated**, completely independent of other tests.
+
+# Using Matchers
+
+const result = { name: 'Mosh' };
+expect(result).toBe({name: 'Mosh'});
+
+    - These are two different objects in memory, even though they have the same content.
+    - Don't compare their references, compare their **Content** with toBeEqual()
