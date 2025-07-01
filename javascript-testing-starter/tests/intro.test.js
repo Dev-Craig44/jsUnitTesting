@@ -54,7 +54,7 @@ describe("calculateAverage", () => {
   it("should calculate the average of an array with two elements", () => {
     expect(calculateAverage([1, 2])).toBe(1.5);
   });
-  //   Write new test case for averaging three elements
+
   it("should calculate the average of an array with three elements", () => {
     expect(calculateAverage([1, 2, 3])).toBe(2);
   });
