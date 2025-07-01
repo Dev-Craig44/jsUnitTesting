@@ -288,3 +288,32 @@ coverage/
 > Strive for meaningful coverage, not just high numbers.
 
 ---
+
+# Characteristics of Good Unit
+
+No test > Bad Test
+
+- Good tests are maintainable, robust and trustworthy.
+- test should be maintainable, have clear names, and test a single behavior.
+
+Robust Test - a test that is resilient to changes in code.
+
+- Test the behavior, not impolementation.
+- Avoid tight assertions.
+
+Trustworthy Test - A test that can be trusted.
+
+- When it passes we should be confident that the code worked
+- When they fail we should know that something is wrong with the code, not the test.
+- No false positives/negatives.
+- Validate the correct behavior.
+- Test boundary conditions.
+  - Empty Arrays
+  - Null Inputs
+  - Etreme Values
+- Deterministic - Consistent results
+  - No random data
+  - No current date/time
+  - No global state.
+
+Tests should be fully **isolated**, completely independent of other tests.
