@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getCoupons } from "../src/core";
+import { calculateDiscount, getCoupons } from "../src/core";
 
 describe("getCoupons", () => {
   it("should return an array of coupons", () => {
@@ -25,5 +25,16 @@ describe("getCoupons", () => {
       expect(coupon.discount).toBeGreaterThan(0);
       expect(coupon.discount).toBeLessThan(1);
     });
+  });
+});
+
+// 1.) Create test suite
+describe("calculateDiscount", () => {
+  // 2.) Create Positive Test case
+  it("should return dicounted price if given valid code", () => {
+    // 3.) Capture the result by calling the function we are testing.
+    const result = calculateDiscount(10, "SAVE10");
+    // 4.) Make assertion to check dicounted price
+    expect(result).toBe(9);
   });
 });

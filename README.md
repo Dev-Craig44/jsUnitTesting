@@ -330,7 +330,7 @@ expect(result).toBe({name: 'Mosh'});
 
 - Write assertions that are not too specific and not too general.
 
-  5.) **TypeError: actual value must be number or bigint, received "undefined"**
+  **TypeError: actual value must be number or bigint, received "undefined"**
 
   - This is not clear.
 
@@ -339,3 +339,8 @@ In the case of the type error, when using TypeScript, we won't run into the erro
 - Make sure that when you are making these assertions, when dealing with a object that you are using the prop and not the actual object for comparing.
 
 - Our tests should test a single behavior
+
+# Positive & Negative Testing
+
+- Positive Testing: Ensures that our application works correctly under normal conditions.
+- Negative Testing: Checks how well our applications handles unexpected or incorrect input.
