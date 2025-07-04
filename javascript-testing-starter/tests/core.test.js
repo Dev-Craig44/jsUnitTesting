@@ -32,9 +32,7 @@ describe("getCoupons", () => {
 describe("calculateDiscount", () => {
   // 2.) Create Positive Test case
   it("should return dicounted price if given valid code", () => {
-    // 3.) Capture the result by calling the function we are testing.
-    const result = calculateDiscount(10, "SAVE10");
     // 4.) Make assertion to check dicounted price
-    expect(result).toBe(9);
+    expect(calculateDiscount(10, "SAVE10")).toBe(9);
   });
 });
