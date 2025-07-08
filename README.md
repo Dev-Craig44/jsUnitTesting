@@ -344,3 +344,9 @@ In the case of the type error, when using TypeScript, we won't run into the erro
 
 - Positive Testing: Ensures that our application works correctly under normal conditions.
 - Negative Testing: Checks how well our applications handles unexpected or incorrect input.
+
+- When testing functions with multiply execution paths, it's always good to use a coverage tool to see what paths have been tested.
+
+`npm run coverage`
+
+- Plug the index.html file that's found in the coverage folder and drag and drop into the browser.
