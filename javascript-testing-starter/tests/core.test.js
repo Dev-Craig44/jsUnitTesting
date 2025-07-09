@@ -28,37 +28,25 @@ describe("getCoupons", () => {
   });
 });
 
-// 1.) Create test suite
 describe("calculateDiscount", () => {
-  // 2.) Create Positive Test case
   it("should return dicounted price if given valid code", () => {
-    // 4.) Make assertion to check dicounted price
     expect(calculateDiscount(10, "SAVE10")).toBe(9);
     expect(calculateDiscount(10, "SAVE20")).toBe(8);
   });
 
-  // 5.) Write negative test
   it("should handle non-numeric price", () => {
-    // When checking a `string` you should use the {toMatch} method with a reg exp
-    // 6.) Make assertion to match the error message
     expect(calculateDiscount("10", "SAVE10")).toMatch(/invalid/i);
   });
 
-  // 7.) Write negative test
   it("should handle negative price", () => {
-    // 8.) Make assertion to match the error message
     expect(calculateDiscount(-10, "SAVE10")).toMatch(/invalid/i);
   });
 
-  // 9.) Write negative test
   it("should handle non-string discount code", () => {
-    // 10.) Make assertion to match the error message
     expect(calculateDiscount(10, 10)).toMatch(/invalid/i);
   });
 
-  // 11.) Write negative test
   it("should handle invalid discount code", () => {
-    // 12.) Make assertion to match the error message
     expect(calculateDiscount(10, "INVALID")).toBe(10);
   });
 });
