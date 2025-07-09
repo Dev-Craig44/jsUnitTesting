@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateDiscount, getCoupons } from "../src/core";
+import { calculateDiscount, getCoupons, validateUserInput } from "../src/core";
 
 describe("getCoupons", () => {
   it("should return an array of coupons", () => {
@@ -48,5 +48,26 @@ describe("calculateDiscount", () => {
 
   it("should handle invalid discount code", () => {
     expect(calculateDiscount(10, "INVALID")).toBe(10);
+  });
+});
+
+// 1.) create test suite
+describe("validatUserInput", () => {
+  // 2.) make positive test case
+  it("should return successful when valid input entered", () => {
+    // 3.) Make assertion for result to match content
+    expect(validateUserInput(`Craig`, 37)).toMatch(/successful/i);
+  });
+
+  // 4.) Write negative test case
+  it("should return invalid if username is not a string", () => {
+    // 5.) Make assertion to match invalid
+    expect(validateUserInput(12, 37)).toMatch(/invalid/i);
+  });
+
+  // 6.) add test case for invalid age
+  it("should return invalid if username is not old enough", () => {
+    // 7.) add assertion to match invalid
+    expect(validateUserInput("Craig", 12)).toMatch(/invalid/i);
   });
 });
