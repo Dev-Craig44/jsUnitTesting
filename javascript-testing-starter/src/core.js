@@ -30,11 +30,16 @@ export function calculateDiscount(price, discountCode) {
 export function validateUserInput(username, age) {
   let errors = [];
 
-  if (typeof username !== "string" || username.length < 3) {
+  // 10.) Cover new test case
+  if (
+    typeof username !== "string" ||
+    username.length < 3 ||
+    username.length > 250
+  ) {
     errors.push("Invalid username");
   }
-
-  if (typeof age !== "number" || age < 18) {
+  // 13.) Make test pass new test case for age over 100
+  if (typeof age !== "number" || age < 18 || age > 100) {
     errors.push("Invalid age");
   }
 
