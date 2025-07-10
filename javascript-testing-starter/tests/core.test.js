@@ -103,25 +103,18 @@ describe("validateUserInput", () => {
   });
 });
 
-// 1.) Create a test suite for isPriceRange()
 describe("isPriceInRange", () => {
-  // 2.) Make test case for when the price is outside of the range
   it("should return false when the price is outside the range", () => {
-    // 3.) Assert what should happen with the target outside the range
     expect(isPriceInRange(-10, 0, 100)).toBe(false);
     expect(isPriceInRange(-200, 0, 100)).toBe(false);
   });
 
-  // 4.) Make test case for when the price is at the max or min
   it("should return true when the price is equal to the min or the max", () => {
-    // 5.) Assert what should happen when the price is at the limit
     expect(isPriceInRange(0, 0, 100)).toBe(true);
     expect(isPriceInRange(100, 0, 100)).toBe(true);
   });
 
-  // 6.) Make test case that should return true when price if within the limits
   it("should return true when the price is within the min or max limits", () => {
-    // 7.) Make assertion what the expected behavior should be
     expect(isPriceInRange(1, 0, 100)).toBe(true);
     expect(isPriceInRange(99, 0, 100)).toBe(true);
   });

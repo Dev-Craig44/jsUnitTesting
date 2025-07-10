@@ -48,10 +48,6 @@ export function validateUserInput(username, age) {
 
 // Lesson: Boundary testing
 export function isPriceInRange(price, min, max) {
-  // To test this function we need to test
-  // 1.) outside the boundary
-  // 2.) at the max or min
-  // 3.) winthin the boundaries
   return price >= min && price <= max;
 }
 
