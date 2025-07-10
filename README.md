@@ -350,3 +350,8 @@ In the case of the type error, when using TypeScript, we won't run into the erro
 `npm run coverage`
 
 - Plug the index.html file that's found in the coverage folder and drag and drop into the browser.
+
+# Boudary Testing
+
+- Testing that focuses on the edges or boundaries of the inputs.
+- See how our functions behave under extreme conditions.
