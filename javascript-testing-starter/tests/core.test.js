@@ -146,5 +146,6 @@ describe("isValidUsername", () => {
   it("should return false for invalid input types", () => {
     expect(isValidUsername(null)).toBe(false);
     expect(isValidUsername(undefined)).toBe(false);
+    expect(isValidUsername(1)).toBe(false);
   });
 });
