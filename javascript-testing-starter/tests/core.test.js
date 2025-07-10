@@ -152,27 +152,23 @@ describe("isValidUsername", () => {
 });
 
 describe("canDrive", () => {
-  // 1.) Make test case for invalid country code
   it("should return false for invalid country code", () => {
     expect(canDrive(20, "FR")).toMatch(/invalid/i);
   });
 
-  // 2.) Make test case for underage in US
   it("should return false for under age in US", () => {
     expect(canDrive(15, "US")).toBe(false);
   });
-  // 3.) Make test for eligible age in US
+
   it("should return true for age eligible in US", () => {
     expect(canDrive(16, "US")).toBe(true);
   });
-  // 4.) Make test for underage in UK
+
   it("should return false for under age in UK", () => {
     expect(canDrive(16, "UK")).toBe(false);
   });
-  // 5.) Make test for eligible age in UK
+
   it("should return true for age eligible in UK", () => {
     expect(canDrive(17, "UK")).toBe(true);
   });
-
-  // We wouldn't need to validate the input type cause it should be handled at the boundary
 });
