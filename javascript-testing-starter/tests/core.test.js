@@ -122,17 +122,29 @@ describe("isPriceInRange", () => {
 });
 
 describe("isValidUsername", () => {
-  it("should return false if username is is too short or too long", () => {
-    expect(isValidUsername("love")).toBe(false);
-    expect(isValidUsername("love".repeat(4))).toBe(false);
+  // We should use variables just incase the company wants to change the limits you can easily make an adjustment here that will carry out through out the test suite
+  const minLength = 5;
+  const maxLength = 15;
+
+  it("should return false if username is too short", () => {
+    expect(isValidUsername("a".repeat(minLength - 1))).toBe(false);
+  });
+  it("should return false if username is too long", () => {
+    expect(isValidUsername("a".repeat(maxLength + 1))).toBe(false);
   });
 
   it("should return true if username is at the min and max length", () => {
-    expect(isValidUsername("lover")).toBe(true);
-    expect(isValidUsername("lover".repeat(3))).toBe(true);
+    expect(isValidUsername("a".repeat(minLength))).toBe(true);
+    expect(isValidUsername("a".repeat(maxLength))).toBe(true);
   });
 
   it("should return true if username is within the range", () => {
-    expect(isValidUsername("lovers")).toBe(true);
+    expect(isValidUsername("a".repeat(minLength + 1))).toBe(true);
+    expect(isValidUsername("a".repeat(maxLength - 1))).toBe(true);
+  });
+
+  it("should return false for invalid input types", () => {
+    expect(isValidUsername(null)).toBe(false);
+    expect(isValidUsername(undefined)).toBe(false);
   });
 });
