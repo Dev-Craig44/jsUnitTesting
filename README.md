@@ -355,3 +355,4 @@ In the case of the type error, when using TypeScript, we won't run into the erro
 
 - Testing that focuses on the edges or boundaries of the inputs.
 - See how our functions behave under extreme conditions.
+- Data we get from the UI or another system, the boundary is where we need to validate that information
