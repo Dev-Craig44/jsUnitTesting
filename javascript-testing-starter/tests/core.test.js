@@ -152,23 +152,20 @@ describe("isValidUsername", () => {
 });
 
 describe("canDrive", () => {
-  it("should return false for invalid country code", () => {
-    expect(canDrive(20, "FR")).toMatch(/invalid/i);
-  });
-
-  it("should return false for under age in US", () => {
-    expect(canDrive(15, "US")).toBe(false);
-  });
-
-  it("should return true for age eligible in US", () => {
-    expect(canDrive(16, "US")).toBe(true);
-  });
-
-  it("should return false for under age in UK", () => {
-    expect(canDrive(16, "UK")).toBe(false);
-  });
-
-  it("should return true for age eligible in UK", () => {
-    expect(canDrive(17, "UK")).toBe(true);
+  // 1.) Create Parameterized Test
+  it.each([
+    // This function takes an array of objects
+    // 2.) Create a data set
+    { age: 15, country: "US", result: false },
+    // 3.) Create more data sets
+    { age: 16, country: "US", result: true },
+    { age: 17, country: "US", result: true },
+    // 4.) Create data set for the UK
+    { age: 16, country: "UK", result: false },
+    { age: 17, country: "UK", result: true },
+    { age: 18, country: "UK", result: true },
+    // 5.) Pass in the name of the test and the test function that gives you a object you can destructure into age, country, and result
+  ])("Should return $result for $age, $country", ({ age, country, result }) => {
+    expect(canDrive(age, country)).toBe(result);
   });
 });

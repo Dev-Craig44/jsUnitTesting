@@ -356,3 +356,8 @@ In the case of the type error, when using TypeScript, we won't run into the erro
 - Testing that focuses on the edges or boundaries of the inputs.
 - See how our functions behave under extreme conditions.
 - Data we get from the UI or another system, the boundary is where we need to validate that information
+
+# Parameterized Tests
+
+- A way to run the same test multiple times with different set of input data
+- This technique is more useful when our testing logic is a little more complicated
