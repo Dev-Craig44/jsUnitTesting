@@ -236,4 +236,65 @@ describe("Stack", () => {
     // 12.) Make the test pass using expect() and give it a function that will throw an error
     expect(() => stack.pop()).toThrow(/empty/i);
   });
+
+  // 15.) Write test case for peek()
+  it("peek should return the item from the stack without removing it", () => {
+    // 16.) Arrange stack with some items
+    stack.push(1);
+    stack.push(2);
+
+    // 17.) Act by calling peek() and storing the result in [peekedItem]
+    const peekedItem = stack.peek();
+
+    // 18.) Assert that the peekd item is 2 and the size of the stack should be 2
+    expect(peekedItem).toBe(2);
+    expect(stack.size()).toBe(2);
+  });
+
+  // 19.) Write testr case for if you call peek() on an empty stack
+  it("peek should throw an error is the stack is empty", () => {
+    // 20.) Act by calling the peek() method
+    expect(() => {
+      stack.peek();
+    }).toThrow(/empty/i);
+  });
+
+  // 21.) Write a test case for isEmpty() when stack is empty
+  it("isEmpty should return true if stack is empty", () => {
+    expect(stack.isEmpty()).toBe(true);
+  });
+
+  // 22.) Write a test case for isEmpty when stack is not empty
+  it("isEmpty should return false if stack is not empty", () => {
+    // 23.) Arrange and item in the stack
+    stack.push(1);
+
+    //  24.) Assert by calling isEmpty() and checking if it's false
+    expect(stack.isEmpty()).toBe(false);
+  });
+  // 25.) Write a test case for size()
+
+  it("size should return the number of items in the stack", () => {
+    // 26.) Arrange some items in the stack
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    // 27.) Assert that the size of the stack is 3
+    expect(stack.size()).toBe(3);
+  });
+
+  // 28.) Write a test case for the clear() method
+  it("clear should remove all items from the array", () => {
+    // 29.) Arrange some items in the stack
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    //  30.) Act by calling clear()
+    stack.clear();
+
+    //  31.) Assert that the size is empty
+    expect(stack.size()).toBe(0);
+  });
 });
