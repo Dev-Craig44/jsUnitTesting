@@ -373,3 +373,82 @@ Example: Before running our tests, we may want to set up a database connection, 
 # Exercise: Testing a Stack
 
 Stack - A data structure that follows the Last-In-First-Out (LIFO) principle.
+
+## ✅ Core Unit Testing Techniques
+
+The following techniques form the foundation of effective, maintainable, and trustworthy unit tests:
+
+---
+
+### 🧪 Fundamental Testing Concepts
+
+- **Positive Testing**  
+  Ensure your application works as expected under normal conditions.
+
+- **Negative Testing**  
+  Verify how your app handles **unexpected or invalid input**.
+
+- **Boundary Testing**  
+  Test your code at **the edges of acceptable input** — minimums, maximums, limits.
+
+- **Parameterized Testing**  
+  Also called **data-driven testing** — run the same test with **multiple input values** to reduce redundancy.
+
+---
+
+### 🔧 Assertion Practices
+
+- **Tight Assertions**  
+  May cause tests to be **fragile** and break unnecessarily when minor details change.
+
+- **Loose Assertions**  
+  Can produce **false positives** — tests that pass even when functionality is broken.
+
+> 🧠 **Balance is key**: Tests should be specific enough to catch issues, but not so rigid that they break when implementation details change.
+
+---
+
+### 🔍 Matchers
+
+A **matcher** is a method used to assert expected outcomes.
+
+Common examples include:
+
+```js
+expect(value).toBe(expected);
+expect(obj).toEqual(expectedObj);
+expect(result).toBeNull();
+```
+
+---
+
+### 🔁 Setup and Teardown
+
+Used to prepare and clean up your test environment.
+
+Vitest (and Jest) provide lifecycle hooks:
+
+```ts
+beforeEach(() => { ... })
+beforeAll(() => { ... })
+afterEach(() => { ... })
+afterAll(() => { ... })
+```
+
+- **Setup** initializes the test environment.
+- **Teardown** ensures no leftover state interferes with future tests.
+
+---
+
+## 📌 Summary
+
+- ✅ Good tests are **maintainable**, **robust**, and **trustworthy**.
+- ❌ It’s better to **write no tests** than to write bad ones.
+- 🧹 Keep tests **short, focused**, and **well-named**.
+- 💡 Test the **behavior**, not the implementation — focus on _what_ the code should do, not _how_ it does it.
+- ⚖️ Avoid randomness, global state, or current time in tests — these cause **inconsistent results**.
+- 🔐 A solid suite of unit tests boosts confidence and accelerates refactoring.
+
+---
+
+**You're now equipped with the fundamentals to build high-quality tests — tests that serve your code, not sabotage it.**
