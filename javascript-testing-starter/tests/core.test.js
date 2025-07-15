@@ -1,4 +1,12 @@
-import { describe, expect, it } from "vitest";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+} from "vitest";
 import {
   calculateDiscount,
   canDrive,
@@ -162,4 +170,26 @@ describe("fetchData", () => {
       // 7.) Make assertion for the error message inside of `reason`
     }
   });
+});
+
+describe("test suite", () => {
+  // 2.) Write a test that executes before all the tests
+  beforeAll(() => {
+    console.log("beforeAll called");
+  });
+  // 1.) Write a test that executes before each test
+  beforeEach(() => {
+    console.log("beforeEach called");
+  });
+
+  afterEach(() => {
+    console.log("afterEach called");
+  });
+
+  afterAll(() => {
+    console.log("afterAll called");
+  });
+  it("test case 1", () => {});
+
+  it("test case 2", () => {});
 });
