@@ -148,13 +148,10 @@ describe("canDrive", () => {
 });
 
 describe("fetchData", () => {
-  it("should return a promise that will resulve to an array of numbers", () => {
-    // 1.) Give the then() method a callback function that has the data as an argument
-    fetchData().then((result) => {
-      // 2.) Make assertion that the result is an array
-      expect(Array.isArray(result)).toBe(true);
-      //  3.) Make assertion that the result has  atleast one item
-      expect(result.length).toBeGreaterThan(0);
-    });
+  it("should return a promise that will resulve to an array of numbers", async () => { // 2.) Label the function async
+    // 1.) Store the results from fetchData() using await
+    const result = await fetchData();
+    expect(Array.isArray(result)).toBe(true);
+    expect(result.length).toBeGreaterThan(0);
   });
 });
