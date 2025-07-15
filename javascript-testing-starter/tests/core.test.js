@@ -148,10 +148,18 @@ describe("canDrive", () => {
 });
 
 describe("fetchData", () => {
-  it("should return a promise that will resulve to an array of numbers", async () => { // 2.) Label the function async
-    // 1.) Store the results from fetchData() using await
-    const result = await fetchData();
-    expect(Array.isArray(result)).toBe(true);
-    expect(result.length).toBeGreaterThan(0);
+  it("should return a promise that will resolve to an array of numbers", async () => {
+    // 2.) Label the function async
+    // 4.) wrap the results logic in a try/catch block
+    try {
+      // 1.) Store the results from fetchData() using await
+      const result = await fetchData();
+    } catch (error) {
+      // 5.) Check to see if the error message has a `reason` property
+      expect(error).toHaveProperty("reason");
+      //  6.) Check if `reason` has an error message
+      expect(error.reason).toMatch(/fail/i);
+      // 7.) Make assertion for the error message inside of `reason`
+    }
   });
 });
