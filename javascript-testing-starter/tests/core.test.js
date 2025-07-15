@@ -14,6 +14,7 @@ import {
   getCoupons,
   isPriceInRange,
   isValidUsername,
+  Stack,
   validateUserInput,
 } from "../src/core";
 
@@ -192,4 +193,46 @@ describe("test suite", () => {
   it("test case 1", () => {});
 
   it("test case 2", () => {});
+});
+
+// 1.) Create test suite for the Stack class
+describe("Stack", () => {
+  // 2.) Add test case for push()
+  it("push should add an item to the stack", () => {
+    // 3.) Arrange a new stack
+    const stack = new Stack();
+
+    // 4.) Act by pushing 1 to the stack
+    stack.push(1);
+
+    // 5.) Assert that the stack should be 1
+    expect(stack.size()).toBe(1);
+  });
+
+  // 6.) Write test case for pop()
+  it("pop should remove and return the top item from the stack", () => {
+    // 7.) Arrange a stack and push some items to it
+    const stack = new Stack();
+    stack.push(1);
+    stack.push(2);
+
+    // 8.) Act by popping the top item and store the result in [poppedItem]
+    const poppedItem = stack.pop();
+
+    // 9.) Assert that the popped item is 2
+    expect(poppedItem).toBe(2);
+
+    // 10.) Assert against the size of the stack
+    expect(stack.size()).toBe(1);
+  });
+
+  // 11.) Write test case for if the stack is empty
+  it("pop should throw an error if stack is empty", () => {
+    const stack = new Stack();
+    // This line will always fail because it will throw an error
+    // stack.pop();
+
+    // 12.) Make the test pass using expect() and give it a function that will throw an error
+    expect(() => stack.pop()).toThrow(/empty/i);
+  });
 });

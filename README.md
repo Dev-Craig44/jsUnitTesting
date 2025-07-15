@@ -369,3 +369,7 @@ In the case of the type error, when using TypeScript, we won't run into the erro
 Sometimes we need to create a consistent environment before running our tests to clean up any resources or state after the tests have executed
 
 Example: Before running our tests, we may want to set up a database connection, create necessary tables with data and so on, and after our test we want to do clean up.
+
+# Exercise: Testing a Stack
+
+Stack - A data structure that follows the Last-In-First-Out (LIFO) principle.
