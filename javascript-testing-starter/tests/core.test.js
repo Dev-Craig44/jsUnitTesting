@@ -197,11 +197,14 @@ describe("test suite", () => {
 
 // 1.) Create test suite for the Stack class
 describe("Stack", () => {
+  // 14.) Create the stack variable outside of the setup function so all the test can have access
+  let stack;
+  // 13.) Add the Stack before each test
+  beforeEach(() => {
+    stack = new Stack();
+  });
   // 2.) Add test case for push()
   it("push should add an item to the stack", () => {
-    // 3.) Arrange a new stack
-    const stack = new Stack();
-
     // 4.) Act by pushing 1 to the stack
     stack.push(1);
 
@@ -211,8 +214,7 @@ describe("Stack", () => {
 
   // 6.) Write test case for pop()
   it("pop should remove and return the top item from the stack", () => {
-    // 7.) Arrange a stack and push some items to it
-    const stack = new Stack();
+    // 7.) Arrange by pushing some items to it
     stack.push(1);
     stack.push(2);
 
@@ -228,7 +230,6 @@ describe("Stack", () => {
 
   // 11.) Write test case for if the stack is empty
   it("pop should throw an error if stack is empty", () => {
-    const stack = new Stack();
     // This line will always fail because it will throw an error
     // stack.pop();
 
