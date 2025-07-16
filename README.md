@@ -451,4 +451,10 @@ afterAll(() => { ... })
 
 ---
 
-**You're now equipped with the fundamentals to build high-quality tests — tests that serve your code, not sabotage it.**
+# Breaking Dependencies with Mocks
+
+## Creating Mock Functions
+
+Mock Function - A function that imitates the behavior of a real function.
+
+- We use these to test a unit in isolation.
