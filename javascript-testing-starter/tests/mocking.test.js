@@ -13,7 +13,7 @@ describe("test suite", () => {
 
     // 7.) Call the function, and pass it a name, store it in [result]
     const result = greet("Craig");
-    // 8.) Log the result to the console
-    console.log(result);
+    // 8.) Make assertion for this function to be called
+    expect(greet).toHaveBeenCalled();
   });
 });
