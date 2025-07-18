@@ -8,14 +8,12 @@ describe("test suite", () => {
   it("test case", () => {
     // 5.) Return a mock function
     const greet = vi.fn();
-    // Off rip, this is an empty function, but if we program it, before we call it, and make it return a value
-    // 6.) give greet() a return value using the {mockReturnValue} method
-    greet.mockResolvedValue("Hello");
+    // 6.) Add a body to our mock function using the {mockImplementation} method
+    greet.mockImplementation((name) => "Hello " + name);
 
-    // 7.) Call the function, which returns a promise, use the {then} method to handle the resolved value
-    greet().then((result) => {
-      // 8.) Log the result to the console
-      console.log(result);
-    });
+    // 7.) Call the function, and pass it a name, store it in [result]
+    const result = greet("Craig");
+    // 8.) Log the result to the console
+    console.log(result);
   });
 });
