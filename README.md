@@ -458,3 +458,13 @@ afterAll(() => { ... })
 Mock Function - A function that imitates the behavior of a real function.
 
 - We use these to test a unit in isolation.
+
+### Exercise: Working With Mock Functions
+
+- Create a mock for the following function
+- sendText(message) {}
+
+- call the mock function
+
+- Assert that the mock function is called
+- Assert that the result is 'ok'
