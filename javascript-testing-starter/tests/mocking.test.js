@@ -32,7 +32,7 @@ describe("getPriceInCurrency", () => {
 // 1.) Create a test for getShippingInfo()
 describe("getShippingInfo", () => {
   // 2.) Create a test case for it to return the shipping cost and ETA
-  it("should return the shipping cost and the ETA", () => {
+  it("should return the shipping info if quote can be fetched", () => {
     // 5.) Call the mocked getShippingQuote function
     vi.mocked(getShippingQuote).mockReturnValue({
       cost: 40,
@@ -42,7 +42,18 @@ describe("getShippingInfo", () => {
     // 3.) Call the functions and store result in [quote]
     const quote = getShippingInfo("New Jersey");
 
-    // 6.) make assertion that the quote is correct
-    expect(quote).toMatch("/shipping cost 40 days 5/i");
+    // 6.) make assertion that the quote has $40 and has 5 Days
+    expect(quote).toMatch("$40");
+    expect(quote).toMatch(/5 Days/i);
+    expect(quote).toMatch(/shipping cost: \$40 \(5 days\)/i);
+  });
+  // 7.) Add test case for when the quote is unalvailable
+  it("should return shipping unavailble if quote cannot be fetched", () => {
+    // 10.) Have the shippingQuote module return null
+    vi.mocked(getShippingQuote).mockReturnValue(null);
+    // 8.) grab the results and store in [result]
+    const result = getShippingInfo("New Jersey");
+    // 9.) make assertiong that the result will be unavialable
+    expect(result).toMatch(/unavailable/i);
   });
 });
