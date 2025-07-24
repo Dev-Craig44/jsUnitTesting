@@ -7,7 +7,6 @@ import { getShippingQuote } from "./libs/shipping";
 
 // Lesson: Mocking modules
 export function getPriceInCurrency(price, currency) {
-  // We need to replace this function with a mock function that we can control in our unit tests.
   const rate = getExchangeRate("USD", currency);
   return price * rate;
 }
