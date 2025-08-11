@@ -467,4 +467,13 @@ Mock Function - A function that imitates the behavior of a real function.
 - call the mock function
 
 - Assert that the mock function is called
+
 - Assert that the result is 'ok'
+
+## Interaction Testing
+
+- Sometimes we need to test the interactions between different units or functions
+
+- Two reasons to use mocks:
+  1.) Sometimes we use them to just get values
+  2.) Sometimes we use them to test the interaction between units
