@@ -1,4 +1,3 @@
-import { trackPageView } from "./libs/analytics";
 import { getExchangeRate } from "./libs/currency";
 import { isValidEmail, sendEmail } from "./libs/email";
 import { charge } from "./libs/payment";
@@ -19,11 +18,6 @@ export function getShippingInfo(destination) {
 }
 
 // Lesson: Interaction testing
-export async function renderPage() {
-  trackPageView("/home");
-
-  return "<div>content</div>";
-}
 
 // Exercise
 export async function submitOrder(order, creditCard) {

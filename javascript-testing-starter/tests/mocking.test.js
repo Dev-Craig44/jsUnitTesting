@@ -52,7 +52,7 @@ describe("getShippingInfo", () => {
     // 10.) Have the shippingQuote module return null
     vi.mocked(getShippingQuote).mockReturnValue(null);
     // 8.) grab the results and store in [result]
-    const result = getShippingInfo("New Jersey");
+    const result = getShippingInfo();
     // 9.) make assertiong that the result will be unavialable
     expect(result).toMatch(/unavailable/i);
   });
