@@ -477,3 +477,12 @@ Mock Function - A function that imitates the behavior of a real function.
 - Two reasons to use mocks:
   1.) Sometimes we use them to just get values
   2.) Sometimes we use them to test the interaction between units
+
+### Exercise: Testing submitOrder()
+
+- When you're looking at the submitorder function, we can't tell what properties are in the first class. This is why we use TypeScript, we can quickly tell what props are included in that object.
+
+Test Cases:
+1.) Make sure submitOrder() calls charge() with correct parameters
+2.) Failed Payment
+3.) Sucessful Payment

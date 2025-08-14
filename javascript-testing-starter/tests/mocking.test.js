@@ -6,11 +6,13 @@ import {
   getPriceInCurrency,
   getShippingInfo,
   renderPage,
+  submitOrder,
 } from "../src/mocking";
 
 vi.mock("../src/libs/currency");
 vi.mock("../src/libs/shipping");
 vi.mock("../src/libs/analytics");
+vi.mock("../src/libs/payment.js");
 
 describe("test suite", () => {
   it("test case", () => {
@@ -66,4 +68,14 @@ describe("renderPage", () => {
 
     expect(trackPageView).toHaveBeenLastCalledWith("/home");
   });
+});
+
+describe("submitOrder", () => {
+  it("should call charge() with correct parameters", async () => {
+    vi.mocked(charge).mockedResolve({});
+
+    const paymentResult = await submitOrder(order, creditCard);
+  });
+
+  it("should return successful when given the correct parameters", () => {});
 });
