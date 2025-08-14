@@ -1,19 +1,33 @@
 import { describe, expect, it, vi } from "vitest";
 import { trackPageView } from "../src/libs/analytics";
 import { getExchangeRate } from "../src/libs/currency";
+import { sendEmail } from "../src/libs/email";
 import { charge } from "../src/libs/payment";
 import { getShippingQuote } from "../src/libs/shipping";
 import {
   getPriceInCurrency,
   getShippingInfo,
   renderPage,
+  signUp,
   submitOrder,
 } from "../src/mocking";
 
 vi.mock("../src/libs/currency");
 vi.mock("../src/libs/shipping");
 vi.mock("../src/libs/analytics");
-vi.mock("../src/libs/payment.js");
+vi.mock("../src/libs/payment");
+// 1.) Give the mock method a second arugment which is a factory function (If we don't provide this, vitest will replace every function with vi.fn())
+vi.mock("../src/libs/email", async (importOriginal) => {
+  // 2.) Use the importOrginal function to import the original module
+  const originalModule = await importOriginal();
+  // 3.) Return a module that has all the orginal functions, but we want to replace on of them.
+  return {
+    // 4.) Use the spread operator to make a copy of all the original functions
+    ...originalModule,
+    // 5.) Replace the sendEmail() with a mock function
+    sendEmail: vi.fn(),
+  };
+});
 
 describe("test suite", () => {
   it("test case", () => {
@@ -96,5 +110,43 @@ describe("submitOrder", () => {
     const result = await submitOrder(order, creditCard);
 
     expect(result).toEqual({ success: false, error: "payment_error" });
+  });
+});
+
+// 6.) Create a new test suite for signUp()
+describe("signUp", () => {
+  // 14.) Move email variable to the top of the suite so all test cases can use it
+  const email = "bullshit@gmail.com";
+  // 7.) Create test case for non-valid email
+  it("should return false if email is not valid", async () => {
+    // 8.) Create invalid email
+    const invalidEmail = "bullshit";
+
+    // 9.) Call signUp w/ invalid email
+    const result = await signUp(invalidEmail);
+
+    // 10.) Assert that the result is false
+    expect(result).toBeFalsy();
+  });
+
+  // 11.) Duplicate last test case but w/ a valid email
+  it("should return true if email is valid", async () => {
+    const result = await signUp(email);
+
+    expect(result).toBe(true);
+  });
+
+  // 12.) Duplicate the last test case but now we want to assert that the welcome email was sent
+  it("should send the welcome email if email is valid", async () => {
+    const result = await signUp(email);
+    // 13.) Change result to sendEmail (interaction testing) and assert that it was called. We can't use to haveBeenCalledWith() because the 2nd arugment (the subject line) can change.
+    // Note: Go back to the mocking.js file and look at the arugments for sendEmail(). 1st is email, 2nd is the subject line
+    expect(sendEmail).toHaveBeenCalled();
+    // 15.) Use the calls method on the mockedfunction to get the arguments of the 1st call and store it in a [args] variable
+    const args = vi.mocked(sendEmail).mock.calls[0];
+    // 16.) Assert that the 1st element in the args array to be the [email] variable because the email isn't going to change.
+    expect(args[0]).toBe(email);
+    // 17.) For the 2nd element in the args array we're going to use a regex to assert that it contains "welcome"
+    expect(args[1]).toMatch(/welcome/i);
   });
 });

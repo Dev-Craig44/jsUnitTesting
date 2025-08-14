@@ -486,3 +486,9 @@ Test Cases:
 1.) Make sure submitOrder() calls charge() with correct parameters
 2.) Failed Payment
 3.) Sucessful Payment
+
+## Partial Mocking
+
+- When calling vi.mock you are replacing all of the functions in the module. Some times you don't want to replace all of them, you want to replace just some of them
+
+- In the vi.mock method there's a second argument where you provide a factory function for for creating a module
