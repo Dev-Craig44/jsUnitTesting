@@ -13,7 +13,6 @@ import {
 vi.mock("../src/libs/currency");
 vi.mock("../src/libs/shipping");
 vi.mock("../src/libs/analytics");
-// 3.) Mock payment module
 vi.mock("../src/libs/payment.js");
 
 describe("test suite", () => {
@@ -72,46 +71,30 @@ describe("renderPage", () => {
   });
 });
 
-// 1.) Make test suite for submitOrder
 describe("submitOrder", () => {
-  // 2.) Make test case for customer to be charged
-  // 4.) Create 1st parameter [order]
   const order = { totalAmount: 10 };
-  // 5.) Create 2nd parameter [creditCard]
   const creditCard = { creditCardNumber: "1234" };
-  //  I moved these variables to the top of the suite so I can use them in multiple tests
 
   it("should charge the customer", async () => {
-    // 8.) Mock charge and return success status
     vi.mocked(charge).mockResolvedValue({ status: "success" });
-    // 6.) Call sumbitOrder w/ params and await it
     await submitOrder(order, creditCard);
 
-    // 7.) assert the charge was called w/ creditCArd and order.totalAmount
     expect(charge).toHaveBeenCalledWith(creditCard, order.totalAmount);
   });
 
-  // 9.) Make test case for successful payment
   it("should return success when payment is sucessful", async () => {
-    // 10.) Mock charge and return success status
     vi.mocked(charge).mockResolvedValue({ status: "success" });
 
-    // 11.) call submitOrder w/ dummy params and await it
     const result = await submitOrder(order, creditCard);
 
-    // 12.) assert result to equal (because we are using two objects)
     expect(result).toEqual({ success: true });
   });
 
-  // 13.) Make test case for failed payment
   it("should return failed when payment is NOT sucessful", async () => {
-    // 14.) Mock charge and return failed status
     vi.mocked(charge).mockResolvedValue({ status: "failed" });
 
-    // 15.) call submitOrder w/ dummy params and await it
     const result = await submitOrder(order, creditCard);
 
-    // 16.) assert result to equal (because we are using two objects)
     expect(result).toEqual({ success: false, error: "payment_error" });
   });
 });
