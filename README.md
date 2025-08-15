@@ -507,3 +507,11 @@ Mock Function - A function that imitates the behavior of a real function.
   3. **`mockRestore()`** — Similar to `mockClear()`, but instead of resetting the implementation to empty, it restores the _original_ implementation.
      - This is only meaningful for spies, since `vi.fn()` mocks start as empty functions.
      - If you created a spy and modified its implementation, calling `mockRestore()` will bring back the original behavior.
+
+## To Mock or Not to Mock
+
+- Tests that rely heavily on mocks can become tied to the internal implementation of your functions — something you generally want to avoid.
+
+**Test what a function does, not how it does it.**
+
+- If a test depends on the exact implementation, it’s more likely to fail when the implementation changes, even if the function’s behavior remains correct.

@@ -132,6 +132,9 @@ describe("signUp", () => {
   });
 
   it("should send the welcome email if email is valid", async () => {
+    // Our tests now hows the {signUp} function is implemented. If we change this implementation in the future, our test may break.
+
+    // So don't overuse mocks, use them only when necessary, which would for mocking external dependencies, like databases, APIs, or services that may not be available, or slow to work w/ during test execution.
     const result = await signUp(email);
 
     expect(sendEmail).toHaveBeenCalledOnce();
