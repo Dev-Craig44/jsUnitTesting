@@ -480,15 +480,20 @@ Mock Function - A function that imitates the behavior of a real function.
 
 ### Exercise: Testing submitOrder()
 
-- When you're looking at the submitorder function, we can't tell what properties are in the first class. This is why we use TypeScript, we can quickly tell what props are included in that object.
+- When reviewing the `submitOrder()` function, we can’t immediately tell what properties exist on the `order` object. This is where TypeScript helps — it makes the available properties explicit.
 
-Test Cases:
-1.) Make sure submitOrder() calls charge() with correct parameters
-2.) Failed Payment
-3.) Sucessful Payment
+**Test Cases:**
+
+1. Verify that `submitOrder()` calls `charge()` with the correct parameters.
+2. Handle a failed payment scenario.
+3. Handle a successful payment scenario.
 
 ## Partial Mocking
 
-- When calling vi.mock you are replacing all of the functions in the module. Some times you don't want to replace all of them, you want to replace just some of them
+- By default, calling `vi.mock()` replaces **all** functions in a module. Sometimes you only want to replace specific functions while keeping the rest intact.
+- You can achieve this by passing a second argument to `vi.mock()`: a factory function that returns a custom version of the module.
 
-- In the vi.mock method there's a second argument where you provide a factory function for for creating a module
+## Spying on Functions
+
+- Spying lets us observe how a function behaves during test execution.
+- A spy records details such as how many times the function was called, the arguments it received, and the values it returned.
