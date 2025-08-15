@@ -171,4 +171,17 @@ describe("isOnline", () => {
 
     expect(isOnline()).toBe(false);
   });
+
+  // 6.) Create test case for when current time falls within the abailable hours
+  it("should return true if current hour is within opening hours", () => {
+    // 7.) duplicate the two lines from step 5, but set the time to opening (Boundary test)
+    vi.setSystemTime("2024-01-01 08:00");
+
+    expect(isOnline()).toBe(true);
+
+    // 8.) duplicate the last two lines, but set the time to one minute before closing (Boundary test)
+    vi.setSystemTime("2024-01-01 19:59");
+
+    expect(isOnline()).toBe(true);
+  });
 });
