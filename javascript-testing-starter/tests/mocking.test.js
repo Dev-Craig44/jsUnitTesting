@@ -155,31 +155,22 @@ describe("login", () => {
   });
 });
 
-// 1.) Create test suite for isOnline()
 describe("isOnline", () => {
-  // 2.) Create a test case for when the current time falls outside the available hours
   it("should return false if current hours is outside opening hours", () => {
-    // 3.) Use vi.setSystemTime() to mock the time to one minute before opening
-    //     (accepts a datetime as a string, number, or Date object)
     vi.setSystemTime("2024-01-01 07:59");
 
-    // 4.) Verify that isOnline() returns false
     expect(isOnline()).toBe(false);
 
-    // 5.) Duplicate the last two steps to test the closing time
     vi.setSystemTime("2024-01-01 20:01");
 
     expect(isOnline()).toBe(false);
   });
 
-  // 6.) Create test case for when current time falls within the abailable hours
   it("should return true if current hour is within opening hours", () => {
-    // 7.) duplicate the two lines from step 5, but set the time to opening (Boundary test)
     vi.setSystemTime("2024-01-01 08:00");
 
     expect(isOnline()).toBe(true);
 
-    // 8.) duplicate the last two lines, but set the time to one minute before closing (Boundary test)
     vi.setSystemTime("2024-01-01 19:59");
 
     expect(isOnline()).toBe(true);
