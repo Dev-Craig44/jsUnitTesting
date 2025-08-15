@@ -137,20 +137,14 @@ describe("signUp", () => {
   });
 });
 
-// 1.) Create a test suite for login()
 describe("login", () => {
-  // 2.) Create a test case to verify that a one-time login code is emailed
   it("should email the one-time login code", async () => {
     const email = "name@domain.com";
-    // 3.) Use vi.spyOn() — first argument is the target object, second is the method to spy on
     const spy = vi.spyOn(security, "generateCode");
-    // 5.) Call the login function
     await login(email);
 
-    // 7.) From the spy object, access the {mock} method’s {results} array, log it with console.log to inspect its structure, then retrieve the [value] property.
     const securityCode = spy.mock.results[0].value;
 
-    // 6.) Verify that sendEmail() was called with both the email and the code arguments
     expect(sendEmail).toHaveBeenLastCalledWith(email, securityCode.toString());
   });
 });
