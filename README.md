@@ -515,3 +515,5 @@ Mock Function - A function that imitates the behavior of a real function.
 **Test what a function does, not how it does it.**
 
 - If a test depends on the exact implementation, it’s more likely to fail when the implementation changes, even if the function’s behavior remains correct.
+
+## Mocking Dates
