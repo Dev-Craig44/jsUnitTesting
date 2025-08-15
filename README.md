@@ -155,7 +155,7 @@ In `package.json`:
 
 ```json
 "scripts": {
-   "test": "vitest"
+  "test": "vitest"
 }
 ```
 
@@ -213,7 +213,7 @@ Add to `package.json`:
 
 ```json
 "scripts": {
-   "test:ui": "vitest --ui"
+  "test:ui": "vitest --ui"
 }
 ```
 
@@ -247,7 +247,7 @@ In `package.json`:
 
 ```json
 "scripts": {
-   "coverage": "vitest run --coverage"
+  "coverage": "vitest run --coverage"
 }
 ```
 
@@ -289,90 +289,115 @@ coverage/
 
 ---
 
-# Characteristics of Good Unit
+# 🏆 Characteristics of Good Unit Tests
 
-No test > Bad Test
+> **No test is better than a bad test.**
 
-- Good tests are maintainable, robust and trustworthy.
-- test should be maintainable, have clear names, and test a single behavior.
+- Good tests are **maintainable**, **robust**, and **trustworthy**.
+- Tests should have clear names and test a single behavior.
 
-Robust Test - a test that is resilient to changes in code.
+**Robust Test:**  
+A test that is resilient to changes in code.
 
-- Test the behavior, not impolementation.
+- Test the **behavior**, not the implementation.
 - Avoid tight assertions.
 
-Trustworthy Test - A test that can be trusted.
+**Trustworthy Test:**  
+A test that can be trusted.
 
-- When it passes we should be confident that the code worked
-- When they fail we should know that something is wrong with the code, not the test.
+- When it passes, we should be confident the code works.
+- When it fails, we should know something is wrong with the code, not the test.
 - No false positives/negatives.
-- Validate the correct behavior.
-- Test boundary conditions.
-  - Empty Arrays
-  - Null Inputs
-  - Etreme Values
-- Deterministic - Consistent results
+- Validate correct behavior.
+- Test boundary conditions:
+  - Empty arrays
+  - Null inputs
+  - Extreme values
+- Deterministic: Consistent results
   - No random data
   - No current date/time
-  - No global state.
+  - No global state
 
 Tests should be fully **isolated**, completely independent of other tests.
 
-# Using Matchers
+---
 
-const result = { name: 'Mosh' };
-expect(result).toBe({name: 'Mosh'});
+## 🧩 Using Matchers
 
-    - These are two different objects in memory, even though they have the same content.
-    - Don't compare their references, compare their **Content** with toBeEqual()
+```js
+const result = { name: "Mosh" };
+expect(result).toBe({ name: "Mosh" }); // Fails: different objects in memory
+expect(result).toEqual({ name: "Mosh" }); // Passes: compares content
+```
 
-# Writing Good Assertions
+- Don't compare object references, compare their **content** with `toEqual()`.
+
+---
+
+## 📝 Writing Good Assertions
 
 - Write assertions that are not too specific and not too general.
 
-  **TypeError: actual value must be number or bigint, received "undefined"**
+  ```js
+  // Example of unclear error:
+  // TypeError: actual value must be number or bigint, received "undefined"
+  ```
 
-  - This is not clear.
+- Make sure to use the correct property when comparing objects.
+- Tests should test a single behavior.
 
-In the case of the type error, when using TypeScript, we won't run into the error.
+---
 
-- Make sure that when you are making these assertions, when dealing with a object that you are using the prop and not the actual object for comparing.
+## ➕➖ Positive & Negative Testing
 
-- Our tests should test a single behavior
+- **Positive Testing:** Ensures the application works correctly under normal conditions.
+- **Negative Testing:** Checks how well the application handles unexpected or incorrect input.
 
-# Positive & Negative Testing
+- For functions with multiple execution paths, use a coverage tool to see what paths have been tested.
 
-- Positive Testing: Ensures that our application works correctly under normal conditions.
-- Negative Testing: Checks how well our applications handles unexpected or incorrect input.
+```bash
+npm run coverage
+```
 
-- When testing functions with multiply execution paths, it's always good to use a coverage tool to see what paths have been tested.
+- Open the `index.html` file in the `coverage` folder in your browser.
 
-`npm run coverage`
+---
 
-- Plug the index.html file that's found in the coverage folder and drag and drop into the browser.
+## 🏁 Boundary Testing
 
-# Boudary Testing
+- Focuses on the edges or boundaries of the inputs.
+- See how functions behave under extreme conditions.
+- Validate data from the UI or other systems at the boundaries.
 
-- Testing that focuses on the edges or boundaries of the inputs.
-- See how our functions behave under extreme conditions.
-- Data we get from the UI or another system, the boundary is where we need to validate that information
+---
 
-# Parameterized Tests
+## 🔄 Parameterized Tests
 
-- A way to run the same test multiple times with different set of input data
-- This technique is more useful when our testing logic is a little more complicated
+- Run the same test multiple times with different sets of input data.
+- Useful when testing logic is more complex.
 
-# Testing Asynchronous Code
+---
 
-# Setup and Teardown
+## ⏳ Testing Asynchronous Code
 
-Sometimes we need to create a consistent environment before running our tests to clean up any resources or state after the tests have executed
+- Use async/await or return promises in your tests to handle asynchronous code.
 
-Example: Before running our tests, we may want to set up a database connection, create necessary tables with data and so on, and after our test we want to do clean up.
+---
 
-# Exercise: Testing a Stack
+## 🧹 Setup and Teardown
 
-Stack - A data structure that follows the Last-In-First-Out (LIFO) principle.
+Sometimes we need to create a consistent environment before running our tests and clean up any resources or state after the tests have executed.
+
+**Example:**  
+Before running tests, set up a database connection and create necessary tables with data. After tests, clean up.
+
+---
+
+## 🏋️‍♂️ Exercise: Testing a Stack
+
+**Stack:** A data structure that follows the Last-In-First-Out (LIFO) principle.
+
+---
 
 ## ✅ Core Unit Testing Techniques
 
@@ -382,29 +407,29 @@ The following techniques form the foundation of effective, maintainable, and tru
 
 ### 🧪 Fundamental Testing Concepts
 
-- **Positive Testing**  
+- **Positive Testing:**  
   Ensure your application works as expected under normal conditions.
 
-- **Negative Testing**  
+- **Negative Testing:**  
   Verify how your app handles **unexpected or invalid input**.
 
-- **Boundary Testing**  
+- **Boundary Testing:**  
   Test your code at **the edges of acceptable input** — minimums, maximums, limits.
 
-- **Parameterized Testing**  
+- **Parameterized Testing:**  
   Also called **data-driven testing** — run the same test with **multiple input values** to reduce redundancy.
 
 ---
 
 ### 🔧 Assertion Practices
 
-- **Tight Assertions**  
+- **Tight Assertions:**  
   May cause tests to be **fragile** and break unnecessarily when minor details change.
 
-- **Loose Assertions**  
+- **Loose Assertions:**  
   Can produce **false positives** — tests that pass even when functionality is broken.
 
-> 🧠 **Balance is key**: Tests should be specific enough to catch issues, but not so rigid that they break when implementation details change.
+> 🧠 **Balance is key:** Tests should be specific enough to catch issues, but not so rigid that they break when implementation details change.
 
 ---
 
@@ -428,11 +453,11 @@ Used to prepare and clean up your test environment.
 
 Vitest (and Jest) provide lifecycle hooks:
 
-```ts
-beforeEach(() => { ... })
-beforeAll(() => { ... })
-afterEach(() => { ... })
-afterAll(() => { ... })
+```js
+beforeEach(() => { ... });
+beforeAll(() => { ... });
+afterEach(() => { ... });
+afterAll(() => { ... });
 ```
 
 - **Setup** initializes the test environment.
@@ -451,36 +476,60 @@ afterAll(() => { ... })
 
 ---
 
-# Breaking Dependencies with Mocks
+# 🧩 Breaking Dependencies with Mocks
 
-## Creating Mock Functions
+## 🛠️ Creating Mock Functions
 
-Mock Function - A function that imitates the behavior of a real function.
+A **mock function** imitates the behavior of a real function.
 
-- We use these to test a unit in isolation.
+- Use mocks to test a unit in isolation.
 
-### Exercise: Working With Mock Functions
+**Example:**
 
-- Create a mock for the following function
-- sendText(message) {}
+```js
+const greet = vi.fn();
+greet.mockReturnValue("hello");
+greet.mockResolvedValue("hello");
+greet.mockRejectedValue("error");
+greet.mockImplementation((name) => "hello " + name);
+```
 
-- call the mock function
+**Assertions:**
 
-- Assert that the mock function is called
+```js
+expect(greet).toHaveBeenCalled();
+expect(greet).toHaveBeenCalledOnce();
+expect(greet).toHaveBeenCalledWith("mosh");
+```
 
-- Assert that the result is 'ok'
+---
 
-## Interaction Testing
+### 🏋️ Exercise: Working With Mock Functions
 
-- Sometimes we need to test the interactions between different units or functions
+- Create a mock for the following function:
+  ```js
+  function sendText(message) {}
+  ```
+- Call the mock function.
+- Assert that the mock function is called.
+- Assert that the result is `'ok'`.
 
-- Two reasons to use mocks:
-  1.) Sometimes we use them to just get values
-  2.) Sometimes we use them to test the interaction between units
+---
 
-### Exercise: Testing submitOrder()
+## 🔄 Interaction Testing
 
-- When reviewing the `submitOrder()` function, we can’t immediately tell what properties exist on the `order` object. This is where TypeScript helps — it makes the available properties explicit.
+- Sometimes we need to test the interactions between different units or functions.
+
+**Two reasons to use mocks:**
+
+1. To get values.
+2. To test the interaction between units.
+
+---
+
+### 🏋️ Exercise: Testing `submitOrder()`
+
+- When reviewing the `submitOrder()` function, TypeScript helps make available properties explicit.
 
 **Test Cases:**
 
@@ -488,32 +537,80 @@ Mock Function - A function that imitates the behavior of a real function.
 2. Handle a failed payment scenario.
 3. Handle a successful payment scenario.
 
-## Partial Mocking
+---
 
-- By default, calling `vi.mock()` replaces **all** functions in a module. Sometimes you only want to replace specific functions while keeping the rest intact.
-- You can achieve this by passing a second argument to `vi.mock()`: a factory function that returns a custom version of the module.
+## 🧩 Partial Mocking
 
-## Spying on Functions
+- By default, calling `vi.mock()` replaces **all** functions in a module.
+- To replace only specific functions, pass a factory function as the second argument to `vi.mock()` that returns a custom version of the module.
+
+---
+
+## 🕵️ Spying on Functions
 
 - Spying lets us observe how a function behaves during test execution.
 - A spy records details such as how many times the function was called, the arguments it received, and the values it returned.
 
-## Clearing, Resetting, and Restoring Mocks
+---
+
+## 🧹 Clearing, Resetting, and Restoring Mocks
 
 - **Clearing Mocks**
-  1. **`mockClear()`** — Removes all call history and recorded information for the mock.
-  2. **`mockReset()`** — Does everything `mockClear()` does, but also resets the mock’s implementation to an empty function.
-     - For example, if you customized the mock’s implementation, `mockReset()` will wipe it and return it to an empty, undefined-returning function.
-  3. **`mockRestore()`** — Similar to `mockClear()`, but instead of resetting the implementation to empty, it restores the _original_ implementation.
-     - This is only meaningful for spies, since `vi.fn()` mocks start as empty functions.
-     - If you created a spy and modified its implementation, calling `mockRestore()` will bring back the original behavior.
+  - `mockClear()` — Removes all call history and recorded information for the mock.
+  - `mockReset()` — Does everything `mockClear()` does, but also resets the mock’s implementation to an empty function.
+  - `mockRestore()` — Restores the _original_ implementation (only meaningful for spies).
 
-## To Mock or Not to Mock
+**Examples:**
+
+```js
+vi.mocked(mockedFunc).mockClear();
+vi.clearAllMocks();
+```
+
+---
+
+## ❓ To Mock or Not to Mock
 
 - Tests that rely heavily on mocks can become tied to the internal implementation of your functions — something you generally want to avoid.
 
-**Test what a function does, not how it does it.**
+> **Test what a function does, not how it does it.**
 
 - If a test depends on the exact implementation, it’s more likely to fail when the implementation changes, even if the function’s behavior remains correct.
 
-## Mocking Dates
+---
+
+## 🕒 Mocking Dates
+
+- Tests should not be dependent on the current date and time as this can lead to different results during different test runs.
+- Mocking dates and times is useful when testing time-sensitive logic to maintain result consistency.
+
+**Example:**
+
+```js
+vi.setSystemTime("2024-01-01 10:00");
+```
+
+---
+
+## 📝 Mocking Modules
+
+```js
+vi.mock("../src/currency");
+vi.mocked(mockedFunc).mockReturnValue(0);
+```
+
+---
+
+## 📖 Summary
+
+- Mock functions simulate the behavior of real functions, allowing you to control their output and behavior during testing.
+- They are useful for isolating specific code paths and testing functions in isolation.
+- Mock functions can be created using `vi.fn()`.
+- You can mock an entire module and replace all exported functions with mocks using `vi.mock()`.
+- Partial mocking is valuable for mocking parts of a module while retaining some of its original behavior.
+- Function spying allows you to monitor and record calls to functions during testing.
+- Mocks should be cleared before or after each test to ensure a clean slate for subsequent tests.
+- Use mocks primarily to replace external dependencies that may be unavailable or slow during test execution (e.g., databases, file system, APIs).
+- Tests should not be dependent on the current date and time; mock dates/times for consistency.
+
+---
