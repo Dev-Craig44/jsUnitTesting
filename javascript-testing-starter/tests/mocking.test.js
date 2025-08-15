@@ -6,6 +6,7 @@ import { charge } from "../src/libs/payment";
 import security from "../src/libs/security";
 import { getShippingQuote } from "../src/libs/shipping";
 import {
+  getDiscount,
   getPriceInCurrency,
   getShippingInfo,
   isOnline,
@@ -174,5 +175,36 @@ describe("isOnline", () => {
     vi.setSystemTime("2024-01-01 19:59");
 
     expect(isOnline()).toBe(true);
+  });
+});
+
+// 1.) Create test suite for getDiscount()
+describe("getDiscount", () => {
+  // 2.) Create test case for Christmas day discount
+  it("should return .2 on Chistmas", () => {
+    // 3.) Mock time for 1st minute of Chrsitmas
+    vi.setSystemTime("12-25-2022 00:01");
+    // 4.) Mock time for one minute before Christmas
+    vi.setSystemTime("12-25-2022 23:59");
+
+    // 5.) Call getDisount() and place the result in a variable
+    const result = getDiscount();
+
+    // 6.) Verity that the discount is 20%
+    expect(result).toBe(0.2);
+  });
+
+  // 7.) Create test case for any other day
+  it("should return .2 on Chistmas", () => {
+    // 8.) Mock time for 1st minute of random day
+    vi.setSystemTime("12-24-2022 00:01");
+    // 9.) Mock time for one minute before random
+    vi.setSystemTime("12-26-2022 00:01");
+
+    // 10.) Call getDisount() and place the result in a variable
+    const result = getDiscount();
+
+    // 11.) Verity that the discount is 20%
+    expect(result).toBe(0);
   });
 });
