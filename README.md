@@ -497,3 +497,13 @@ Mock Function - A function that imitates the behavior of a real function.
 
 - Spying lets us observe how a function behaves during test execution.
 - A spy records details such as how many times the function was called, the arguments it received, and the values it returned.
+
+## Clearing, Resetting, and Restoring Mocks
+
+- **Clearing Mocks**
+  1. **`mockClear()`** — Removes all call history and recorded information for the mock.
+  2. **`mockReset()`** — Does everything `mockClear()` does, but also resets the mock’s implementation to an empty function.
+     - For example, if you customized the mock’s implementation, `mockReset()` will wipe it and return it to an empty, undefined-returning function.
+  3. **`mockRestore()`** — Similar to `mockClear()`, but instead of resetting the implementation to empty, it restores the _original_ implementation.
+     - This is only meaningful for spies, since `vi.fn()` mocks start as empty functions.
+     - If you created a spy and modified its implementation, calling `mockRestore()` will bring back the original behavior.
